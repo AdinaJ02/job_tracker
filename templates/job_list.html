@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <!-- Add a banner image -->
+    <div class="banner mb-4">
+        <img src="{% static 'images/banner.png' %}" alt="Job Tracker Banner" class="img-fluid rounded">
+    </div>
+
+    <h2 class="text-center">Job Application Tracker</h2>
+    
+    <a href="{% url 'job_add' %}" class="btn btn-primary mb-3">Add New Application</a>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th><i class="fa fa-building"></i> Company</th>
+                <th><i class="fa fa-briefcase"></i> Position</th>
+                <th><i class="fa fa-calendar"></i> Date</th>
+                <th><i class="fa fa-info-circle"></i> Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for application in applications %}
+            <tr>
+                <td>
+                    <i class="fa fa-building text-primary"></i>
+                    {{ application.company_name }}
+                </td>
+                <td>
+                    <i class="fa fa-briefcase text-success"></i>
+                    {{ application.position }}
+                </td>
+                <td>
+                    <i class="fa fa-calendar text-info"></i>
+                    {{ application.application_date }}
+                </td>
+                <td>
+                    <i class="fa fa-info-circle text-warning"></i>
+                    {{ application.get_status_display }}
+                </td>
+                <td class="actions">
+                    <a href="{% url 'job_edit' application.pk %}" class="btn btn-warning">Edit</a>
+                    <a href="{% url 'job_delete' application.pk %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
