@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-z)_guw_ph&ftz*y@=k4%&x+ami7oqf33$jv1az!6u!h^gu79ko
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['job-tracker-u8u5.onrender.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -115,6 +115,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = (

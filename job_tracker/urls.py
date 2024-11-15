@@ -18,13 +18,17 @@ from django.contrib import admin
 from django.urls import path
 from . import settings
 from django.conf.urls.static import static 
-from tracker.views import job_list, job_edit, job_delete, job_add
+from tracker.views import job_list, job_add, job_edit, job_delete, login_view, signup_view, logout_view
+from . import settings
 
 urlpatterns = [
     path('', job_list, name='job_list'),
     path('add/', job_add, name='job_add'),
     path('edit/<int:pk>/', job_edit, name='job_edit'),
     path('delete/<int:pk>/', job_delete, name='job_delete'),
+    path('accounts/login/', login_view, name='login'),
+    path('accounts/signup/', signup_view, name='signup'),
+    path('accounts/logout/', logout_view, name='logout'),
     path('admin/', admin.site.urls),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

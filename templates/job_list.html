@@ -2,10 +2,8 @@
 {% load static %}
 {% block content %}
 
-<div class="container">
-    <!-- Add a banner image -->
     <div class="banner mb-4">
-        <img src="{% static 'images/banner.png' %}" alt="Job Tracker Banner" class="img-fluid rounded">
+        <img src="{% static 'images/banner.jpg' %}" alt="Job Tracker Banner" class="img-fluid rounded">
     </div>
 
     <h2 class="text-center">Job Application Tracker</h2>
@@ -49,6 +47,5 @@
             {% endfor %}
         </tbody>
     </table>
-</div>
 
 {% endblock %}
